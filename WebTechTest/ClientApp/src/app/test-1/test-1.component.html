@@ -1,0 +1,32 @@
+<h1>Test-1</h1>
+
+<p><b>Q:</b>This is a page that shows the users in an organization. It reads all the users and the AD groups
+  from the database. In a production environment this page is placing strain on the database.</p>
+
+<p>1. Q: What database change would you implement to improve performance. Implement this in the code. </p>
+<p>1. A: </p>
+<p>2. Q: What UI/code change would you implement to alleviate strain on the databaes. Implement the frontend and backend changes on this test.</p>
+<p>2. A: </p>
+<p>3. Q: How could you change the method CreateTest1Data to be more performant.</p>
+<p>3. A: </p>
+<p>4. Q: What is the relationship defined in method CreatePersonAdGroupRelationship</p>
+<p>4. A: </p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="people">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Ad Groups</th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let person of people">
+      <td>{{ person.name }}</td>
+      <td>{{ person.surname }}</td>
+      <td>{{ person.adGroups }}</td>      
+    </tr>
+  </tbody>
+</table>
