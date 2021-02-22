@@ -1,0 +1,25 @@
+answer
+1. What database change would you implement to improve performance. Implement this in the code.
+   implement async await
+2. Q: What UI/code change would you implement to alleviate strain on the databaes. Implement the frontend and backend changes on this test.
+   get data result from server and stored in angular component variable.
+3. Q: How could you change the method CreateTest1Data to be more performant.
+   remove dataContext.SaveChanges(); and leave the last one in the code block.
+4. Q: What is the relationship defined in method CreatePersonAdGroupRelationship
+   many to many relationship
+
+Test 2
+What WCF configuration changes would you make to improve the performance/throughput of the WCF host/service
+- change from wsHttpBinding to BasicHttpBinding 
+- implement in-memory caching by adding AspNetCompatibilityRequirements attribute into wcf config
+
+1. What database change would you implement to improve performance
+disable change tracking
+use stored procedure
+
+Test 3
+What WCF configuration changes would you make to improve the performance/throughput of the WCF host/service
+- change from wsHttpBinding to BasicHttpBinding 
+- implement in-memory caching by adding AspNetCompatibilityRequirements attribute into wcf config
+1. What database change would you implement to improve performance
+use stored procedure
