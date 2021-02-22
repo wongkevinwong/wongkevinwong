@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using WebTechTest.Models.Test1;
 using WebTechTest.Models.Test3;
 
@@ -11,14 +12,14 @@ namespace WebTechTest.Services
     {
         private DataContext dataContext;
 
-        public void CreateData(DataContext dataContext)
+        public async Task CreateData(DataContext dataContext)
         {
             this.dataContext = dataContext;
 
-            CreateTest1Data();
+            await CreateTest1Data();
         }
 
-        private void CreateTest1Data()
+        private async Task CreateTest1Data()
         {
 
             for (var adCount = 1; adCount <= 10; adCount++)
@@ -27,20 +28,20 @@ namespace WebTechTest.Services
                 dataContext.Add(adGroup);
             }
 
-            dataContext.SaveChanges();
+            //dataContext.SaveChanges();
 
             for (var i = 1; i <= 1000; i++)
             {
                 for (var j = 65; j <= 89; j++)
                 {
-                    string id = string.Concat(Encoding.ASCII.GetString(new byte[] { (byte)j, 32 }), i);
-                    string name = $"{id} Name";
-                    string surname = $"{id} Surname";
+                    var id = string.Concat(Encoding.ASCII.GetString(new byte[] { (byte)j, 32 }), i);
+                    var name = $"{id} Name";
+                    var surname = $"{id} Surname";
 
                     var person = new Person() { Name = name, Surname = surname };
 
                     dataContext.Add(person);
-                    dataContext.SaveChanges();
+                    //dataContext.SaveChanges();
 
                     var adGroups = dataContext.AdGroups
                                               .OrderBy(n => Guid.NewGuid())
@@ -48,11 +49,11 @@ namespace WebTechTest.Services
                                               .Select(n => new PersonAdGroup() { AdGroupId = n.Id, PersonId = person.Id });
 
                     dataContext.PeopleAdGroups.AddRange(adGroups);
-                    dataContext.SaveChanges();
+                    //dataContext.SaveChanges();
                 }
             }
 
-            dataContext.SaveChanges();
+            await dataContext.SaveChangesAsync();
         }
 
 

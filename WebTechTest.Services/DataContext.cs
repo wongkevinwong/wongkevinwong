@@ -11,7 +11,7 @@ namespace WebTechTest.Services
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            CreateRelationships(modelBuilder);
         }
 
         private void CreateRelationships(ModelBuilder modelBuilder)
@@ -29,8 +29,8 @@ namespace WebTechTest.Services
         public DataContext(DbContextOptions<DataContext> options): base(options)
         {
             //TODO:remove this
-            this.Database.EnsureDeleted();
-            
+            //this.Database.EnsureDeleted();
+
             var created = this.Database.EnsureCreated();
 
             if (created)
