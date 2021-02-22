@@ -10,7 +10,7 @@ using WebTechTest.Services;
 namespace WebTechTest.Services.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210222115917_init")]
+    [Migration("20210222211708_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,7 +146,7 @@ namespace WebTechTest.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Student","Test-3");
                 });
 
             modelBuilder.Entity("WebTechTest.Models.Test1.PersonAdGroup", b =>

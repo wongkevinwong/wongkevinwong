@@ -144,7 +144,7 @@ namespace WebTechTest.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Student","Test-3");
                 });
 
             modelBuilder.Entity("WebTechTest.Models.Test1.PersonAdGroup", b =>

@@ -60,8 +60,10 @@ namespace WebTechTest.Services
         public void CreateTestData3()
         {
             var random = new Random(DateTime.Now.Millisecond);
-
+            var randomMark = new Random();
+            var randomCourses = new Random();
             var courses = new List<Course>();
+            var evaluations = new List<Evaluation>();
 
             for (var courseCount = 1; courseCount <= 50; courseCount++)
             {                
@@ -83,9 +85,20 @@ namespace WebTechTest.Services
 
                 for (var evaluationCount = 1; evaluationCount <= 8; evaluationCount++)
                 {
+                    var evaluation = new Evaluation()
+                    {
+                        Name = $"Evaluation {evaluationCount}",
+                        Mark = randomMark.Next(20,100)
+                    };
+                    evaluations.Add(evaluation);
                 }
+                student.Courses.AddRange(dataContext.Courses
+                                              .Take(randomCourses.Next(1,50))
+                                              .Select(n => new Course() { Name = n.Name, Group = n.Group }));
+                dataContext.Students.Add(student);
 
             }
+
 
 
         }

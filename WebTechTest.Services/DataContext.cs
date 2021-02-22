@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WebTechTest.Models.Test1;
 using WebTechTest.Models.Test3;
 
@@ -26,16 +27,19 @@ namespace WebTechTest.Services
             modelBuilder.Entity<PersonAdGroup>().HasOne(pa => pa.Person).WithMany(p => p.PersonAdGroups).HasForeignKey(p => p.PersonId);
         }
 
+            
+
         public DataContext(DbContextOptions<DataContext> options): base(options)
         {
             //TODO:remove this
             //this.Database.EnsureDeleted();
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
             var created = this.Database.EnsureCreated();
 
             if (created)
             {
-                new SetupData().CreateData(this);
+                Task.Run(()=>new SetupData().CreateData(this)).Wait();
             }
         }
 
