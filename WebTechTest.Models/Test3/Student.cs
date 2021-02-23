@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebTechTest.Models.Test3
 {
+    [Table("Student", Schema = "Test-3")]
     public class Student
     {
         public int Id { get; set; }

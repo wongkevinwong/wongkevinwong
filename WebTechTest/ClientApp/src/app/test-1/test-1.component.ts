@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class Test1Component
 {
   public people: Person[];
-
+  public forecasts: boolean;
   private http: HttpClient;
   private getPeopleUrl: string;
 
@@ -18,6 +18,7 @@ export class Test1Component
     this.http = http;
     this.getPeopleUrl = baseUrl + 'test1';
     this.getPeople();
+    this.forecasts = false;
   }
 
   getPeople = () =>
@@ -26,6 +27,7 @@ export class Test1Component
     {
       debugger;
       this.people = result;
+      this.forecasts = true;
     }, error => console.error(error));
   }
 }
